@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  BrowserRouter, Routes, Route
+  BrowserRouter, Routes, Route, Navigate
 } from 'react-router-dom';
 import { AppProvider } from './context.';
 import './index.css';
@@ -16,11 +16,12 @@ root.render(
   <AppProvider>
     <BrowserRouter>
       <Routes>
-        <Route path = "/book" element = {<Home />}>
-          <Route path = "about" element = {<About />} />
-          <Route path = "contact" element = {<Contact />} />
-          <Route path = "" element = {<BookList />} />
-          <Route path = ":id" element = {<BookDetails />} />
+        <Route path="/" element={<Navigate to="/book" />} />
+        <Route path="/book" element={<Home />}>
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="" element={<BookList />} />
+          <Route path=":id" element={<BookDetails />} />
         </Route>
       </Routes>
     </BrowserRouter>
